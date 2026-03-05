@@ -1,0 +1,357 @@
+{
+  "$schema": "https://lcmx.io/schema/1.0/lcmx.json",
+
+  "meta": {
+    "id": "urn:example:course:dsgvo-grundlagen",
+    "lcmx_version": "1.0",
+    "title": "DSGVO-Grundlagen für Mitarbeitende",
+    "description": "Pflichtschulung zur Datenschutz-Grundverordnung für alle Mitarbeitenden.",
+    "duration_minutes": 45,
+    "release_date": "2024-03-01",
+    "updated_date": "2025-01-15",
+    "content_type": "elearning",
+    "languages": ["de"],
+    "provider": "Acme Learning GmbH",
+    "version": "2.1.0"
+  },
+
+  "didactics": {
+    "target_audience": [
+      "Alle Mitarbeitenden",
+      "Führungskräfte"
+    ],
+    "learning_objectives": [
+      "Die wichtigsten Grundbegriffe der DSGVO erklären können",
+      "Eine Datenpanne erkennen und den Meldeprozess einleiten können",
+      "Die 72-Stunden-Meldepflicht korrekt anwenden können"
+    ],
+    "prerequisites": ["Keine"],
+    "didactic_ratio": {
+      "knowledge_transfer": 0.50,
+      "transfer": 0.35,
+      "motivation": 0.15
+    },
+    "bloom_levels": ["remember", "understand", "apply"],
+    "certification": true
+  },
+
+  "structure": {
+    "nodes": [
+      {
+        "id": "ch-01",
+        "title": "Grundbegriffe der DSGVO",
+        "type": "chapter",
+        "order": 1,
+        "parent_id": null,
+        "duration_minutes": 15
+      },
+      {
+        "id": "p-01-01",
+        "title": "Was sind personenbezogene Daten?",
+        "type": "page",
+        "path": "/chapter1/page1.html",
+        "order": 1,
+        "parent_id": "ch-01",
+        "duration_minutes": 5
+      },
+      {
+        "id": "p-01-02",
+        "title": "Rollen im Datenschutz: Verantwortlicher und Auftragsverarbeiter",
+        "type": "page",
+        "path": "/chapter1/page2.html",
+        "order": 2,
+        "parent_id": "ch-01",
+        "duration_minutes": 5
+      },
+      {
+        "id": "p-01-03",
+        "title": "Wann gilt die DSGVO?",
+        "type": "page",
+        "path": "/chapter1/page3.html",
+        "order": 3,
+        "parent_id": "ch-01",
+        "duration_minutes": 5
+      },
+      {
+        "id": "ch-02",
+        "title": "Datenpannen & Meldepflichten",
+        "type": "chapter",
+        "order": 2,
+        "parent_id": null,
+        "duration_minutes": 20
+      },
+      {
+        "id": "p-02-01",
+        "title": "Was ist eine Datenpanne?",
+        "type": "page",
+        "path": "/chapter2/page1.html",
+        "order": 1,
+        "parent_id": "ch-02",
+        "duration_minutes": 5
+      },
+      {
+        "id": "p-02-02",
+        "title": "Der Meldeprozess Schritt für Schritt",
+        "type": "page",
+        "path": "/chapter2/page2.html",
+        "order": 2,
+        "parent_id": "ch-02",
+        "duration_minutes": 8
+      },
+      {
+        "id": "p-02-03",
+        "title": "Konsequenzen bei Verstößen",
+        "type": "page",
+        "path": "/chapter2/page3.html",
+        "order": 3,
+        "parent_id": "ch-02",
+        "duration_minutes": 7
+      },
+      {
+        "id": "ch-03",
+        "title": "Abschlusstest",
+        "type": "chapter",
+        "order": 3,
+        "parent_id": null,
+        "duration_minutes": 10
+      },
+      {
+        "id": "p-03-01",
+        "title": "Wissenstest: DSGVO-Grundlagen",
+        "type": "quiz",
+        "path": "/quiz/final.html",
+        "order": 1,
+        "parent_id": "ch-03",
+        "duration_minutes": 10
+      }
+    ]
+  },
+
+  "content": {
+    "summary": "Dieser Kurs vermittelt die Grundlagen der DSGVO. Schwerpunkte sind der Begriff der personenbezogenen Daten, die Pflichten des Verantwortlichen sowie das korrekte Vorgehen bei Datenpannen inklusive der 72-Stunden-Meldepflicht gegenüber der Aufsichtsbehörde.",
+    "key_topics": [
+      "DSGVO",
+      "personenbezogene Daten",
+      "Datenpanne",
+      "72-Stunden-Meldepflicht",
+      "Datenschutzbeauftragter",
+      "Bußgeld",
+      "Verantwortlicher",
+      "Aufsichtsbehörde"
+    ],
+    "pages": [
+      {
+        "node_id": "p-01-01",
+        "ai_summary": "Einführung in den Begriff der personenbezogenen Daten gemäß Art. 4 Nr. 1 DSGVO mit typischen Beispielen.",
+        "ai_content": "## Was sind personenbezogene Daten?\n\nAlle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen, gelten als personenbezogen (Art. 4 Nr. 1 DSGVO). Typische Beispiele sind Name, E-Mail-Adresse, IP-Adresse, Standortdaten und Kennnummern.\n\nDie DSGVO ist seit dem 25. Mai 2018 in allen EU-Mitgliedstaaten unmittelbar anwendbar und ersetzt die frühere Richtlinie 95/46/EG."
+      },
+      {
+        "node_id": "p-01-02",
+        "ai_summary": "Unterscheidung zwischen Verantwortlichem (Controller) und Auftragsverarbeiter (Processor) nach DSGVO.",
+        "ai_content": "## Rollen im Datenschutz\n\n**Verantwortlicher** (Art. 4 Nr. 7 DSGVO): Natürliche oder juristische Person, die über Zwecke und Mittel der Verarbeitung personenbezogener Daten entscheidet. Trägt die primäre Haftung.\n\n**Auftragsverarbeiter** (Art. 4 Nr. 8 DSGVO): Verarbeitet Daten im Auftrag des Verantwortlichen. Benötigt einen Auftragsverarbeitungsvertrag (Art. 28 DSGVO)."
+      },
+      {
+        "node_id": "p-02-01",
+        "ai_summary": "Definition einer Datenpanne (Data Breach) nach Art. 4 Nr. 12 DSGVO und Überblick über die Meldepflichten.",
+        "ai_content": "## Was ist eine Datenpanne?\n\nEine Datenpanne (Data Breach) ist eine Sicherheitsverletzung, die zur unbeabsichtigten oder unrechtmäßigen Vernichtung, dem Verlust, der Veränderung oder der unbefugten Offenlegung von personenbezogenen Daten führt (Art. 4 Nr. 12 DSGVO).\n\n## Meldepflicht: 72-Stunden-Frist\n\nDatepannen müssen der zuständigen Aufsichtsbehörde ohne unangemessene Verzögerung, spätestens binnen 72 Stunden nach Bekanntwerden, gemeldet werden (Art. 33 Abs. 1 DSGVO). **Wichtig:** Die Frist beginnt ab dem Zeitpunkt der Kenntnis, nicht ab dem Eintrittszeitpunkt des Vorfalls.\n\nZusätzlich muss jede Datenpanne intern dokumentiert werden, unabhängig davon, ob eine Meldepflicht besteht (Art. 33 Abs. 5 DSGVO)."
+      },
+      {
+        "node_id": "p-02-02",
+        "ai_summary": "Schrittweiser Meldeprozess bei Datenpannen mit Rollenverantwortlichkeiten und einem konkreten Beispiel.",
+        "ai_content": "## Der Meldeprozess bei einer Datenpanne\n\n1. Vorfall intern dokumentieren (Zeitpunkt, Art, Umfang)\n2. Datenschutzbeauftragten informieren\n3. Risikobeurteilung durchführen\n4. Aufsichtsbehörde melden, falls Risiko besteht (innerhalb von 72 Stunden)\n5. Betroffene Personen benachrichtigen, falls hohes Risiko besteht\n\n**Beispiel:** Ein Vertriebsmitarbeiter verliert sein Notebook mit unverschlüsselten Kundendaten (Name, E-Mail, Umsatz). Das Unternehmen erkennt den Vorfall am Montag — die 72-Stunden-Frist endet Donnerstag 09:00 Uhr."
+      },
+      {
+        "node_id": "p-02-03",
+        "ai_summary": "Bußgeldrahmen der DSGVO nach Art. 83 und Konsequenzen bei unterlassener Meldung.",
+        "ai_content": "## Konsequenzen bei Verstößen\n\nDie DSGVO sieht zwei Bußgeldrahmen vor:\n- Bis zu **10 Mio. EUR** oder 2 % des weltweiten Jahresumsatzes (Art. 83 Abs. 4) für weniger schwerwiegende Verstöße\n- Bis zu **20 Mio. EUR** oder 4 % des weltweiten Jahresumsatzes (Art. 83 Abs. 5) für schwerwiegende Verstöße\n\nWird eine meldepflichtige Datenpanne nicht oder nicht fristgerecht gemeldet, fällt dies unter den ersten Bußgeldrahmen."
+      }
+    ]
+  },
+
+  "knowledge": {
+    "generated_at": "2025-03-01T12:00:00Z",
+    "generator": "claude-sonnet-4-20250514",
+    "schema_version": "1.0",
+    "items": [
+      {
+        "id": "cpt-01",
+        "type": "concept",
+        "title": "Personenbezogene Daten",
+        "body": "Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen (Art. 4 Nr. 1 DSGVO). Typische Beispiele: Name, E-Mail-Adresse, IP-Adresse, Standortdaten, Kennnummern.",
+        "source_node_id": "p-01-01",
+        "domain": "Datenschutz",
+        "aliases": ["PBD", "Personal Data", "personenbezogene Informationen"],
+        "keywords": ["DSGVO", "Datenschutz", "Art. 4"],
+        "generated_by": "ai",
+        "confidence": 0.98
+      },
+      {
+        "id": "cpt-02",
+        "type": "concept",
+        "title": "Verantwortlicher (DSGVO)",
+        "body": "Natürliche oder juristische Person, die über Zwecke und Mittel der Verarbeitung personenbezogener Daten entscheidet (Art. 4 Nr. 7 DSGVO). Trägt die primäre Haftung gegenüber der Aufsichtsbehörde.",
+        "source_node_id": "p-01-02",
+        "domain": "Datenschutz",
+        "aliases": ["Controller", "Data Controller"],
+        "keywords": ["Controller", "Art. 4 Nr. 7", "Haftung"],
+        "generated_by": "ai",
+        "confidence": 0.97
+      },
+      {
+        "id": "cpt-03",
+        "type": "concept",
+        "title": "Datenpanne (Data Breach)",
+        "body": "Sicherheitsverletzung, die zur unbeabsichtigten oder unrechtmäßigen Vernichtung, dem Verlust, der Veränderung oder der unbefugten Offenlegung von personenbezogenen Daten führt (Art. 4 Nr. 12 DSGVO).",
+        "source_node_id": "p-02-01",
+        "domain": "Datenschutz",
+        "aliases": ["Data Breach", "Sicherheitsvorfall", "Datenschutzverletzung"],
+        "keywords": ["DSGVO", "Art. 4 Nr. 12", "Sicherheit"],
+        "generated_by": "ai",
+        "confidence": 0.96
+      },
+      {
+        "id": "fct-01",
+        "type": "fact",
+        "title": "DSGVO-Geltungsbeginn: 25. Mai 2018",
+        "body": "Die DSGVO ist seit dem 25. Mai 2018 in allen EU-Mitgliedstaaten unmittelbar anwendbar. Sie ersetzt die Richtlinie 95/46/EG und schafft einen einheitlichen Rechtsrahmen für den Datenschutz im europäischen Binnenmarkt.",
+        "source": "DSGVO Art. 99 Abs. 2",
+        "source_node_id": "p-01-01",
+        "verified": true,
+        "generated_by": "ai",
+        "confidence": 0.99
+      },
+      {
+        "id": "fct-02",
+        "type": "fact",
+        "title": "Bußgeldrahmen DSGVO: bis 20 Mio. EUR oder 4 % Umsatz",
+        "body": "Die DSGVO sieht zwei Bußgeldrahmen vor: bis zu 10 Mio. EUR bzw. 2 % des weltweiten Jahresumsatzes (Art. 83 Abs. 4) oder bis zu 20 Mio. EUR bzw. 4 % (Art. 83 Abs. 5) bei schwerwiegenden Verstößen. Maßgeblich ist jeweils der höhere Betrag.",
+        "source": "DSGVO Art. 83",
+        "source_node_id": "p-02-03",
+        "verified": true,
+        "generated_by": "ai",
+        "confidence": 0.98
+      },
+      {
+        "id": "rul-01",
+        "type": "rule",
+        "title": "72-Stunden-Meldepflicht bei Datenpannen",
+        "body": "Datenpannen müssen der zuständigen Aufsichtsbehörde ohne unangemessene Verzögerung, spätestens binnen 72 Stunden nach Bekanntwerden, gemeldet werden. Die Frist beginnt ab dem Zeitpunkt der Kenntnis durch den Verantwortlichen, nicht ab dem Eintrittszeitpunkt des Vorfalls.",
+        "obligation": "must",
+        "legal_basis": "DSGVO Art. 33 Abs. 1",
+        "scope": "Alle Verantwortlichen, bei denen eine Datenpanne voraussichtlich zu einem Risiko für die Rechte und Freiheiten natürlicher Personen führt",
+        "source_node_id": "p-02-01",
+        "generated_by": "ai",
+        "confidence": 0.98
+      },
+      {
+        "id": "rul-02",
+        "type": "rule",
+        "title": "Interne Dokumentationspflicht für Datenpannen",
+        "body": "Jede Datenpanne muss intern dokumentiert werden, unabhängig davon, ob eine externe Meldepflicht besteht. Die Dokumentation muss die Umstände, Auswirkungen und ergriffenen Abhilfemaßnahmen umfassen und für Prüfzwecke aufbewahrt werden.",
+        "obligation": "must",
+        "legal_basis": "DSGVO Art. 33 Abs. 5",
+        "scope": "Alle Verantwortlichen",
+        "source_node_id": "p-02-01",
+        "generated_by": "ai",
+        "confidence": 0.96
+      },
+      {
+        "id": "prc-01",
+        "type": "process",
+        "title": "Meldeprozess bei Datenpanne",
+        "body": "**Auslöser:** Entdeckung einer Datenpanne\n\n1. Vorfall intern dokumentieren (Zeitpunkt, Art, Umfang der betroffenen Daten)\n2. Datenschutzbeauftragten unverzüglich informieren\n3. Risikobeurteilung für betroffene Personen durchführen\n4. Aufsichtsbehörde melden, falls Risiko besteht (Frist: < 72 Stunden ab Kenntnis)\n5. Betroffene Personen benachrichtigen, falls hohes Risiko besteht\n\n**Ergebnis:** Vorfall regelkonform gemeldet und vollständig dokumentiert",
+        "trigger": "Entdeckung einer Datenpanne",
+        "outcome": "Regelkonformer Abschluss aller Melde- und Dokumentationspflichten",
+        "steps_count": 5,
+        "roles": ["Datenschutzbeauftragter", "IT-Sicherheit", "Geschäftsleitung", "Rechtsabteilung"],
+        "source_node_id": "p-02-02",
+        "generated_by": "ai",
+        "confidence": 0.94
+      },
+      {
+        "id": "cse-01",
+        "type": "cause_effect",
+        "title": "Unterlassene Meldung → Bußgeld bis 10 Mio. EUR",
+        "body": "Wird eine meldepflichtige Datenpanne nicht oder nicht fristgerecht der Aufsichtsbehörde gemeldet, drohen Bußgelder bis zu 10 Millionen Euro oder 2 % des weltweiten Jahresumsatzes — je nachdem, welcher Betrag höher ist.",
+        "cause": "Unterlassene oder verspätete Meldung einer meldepflichtigen Datenpanne",
+        "effect": "Bußgeld bis 10 Mio. EUR oder 2 % des weltweiten Jahresumsatzes",
+        "severity": "critical",
+        "probability": "medium",
+        "source_node_id": "p-02-03",
+        "generated_by": "ai",
+        "confidence": 0.97
+      },
+      {
+        "id": "exm-01",
+        "type": "example",
+        "title": "Datenpanne: Unverschlüsseltes Notebook gestohlen",
+        "body": "Ein Vertriebsmitarbeiter verliert sein Notebook mit unverschlüsselten Kundendaten (Name, E-Mail-Adresse, Umsatzdaten). Das Unternehmen erkennt den Vorfall am Montag um 09:00 Uhr. Die 72-Stunden-Frist läuft damit bis Donnerstag 09:00 Uhr. Da das Risiko für betroffene Personen als nicht vernachlässigbar eingestuft wird, ist eine Meldung an die Aufsichtsbehörde erforderlich.",
+        "polarity": "negative",
+        "realistic": true,
+        "domain": "Vertrieb / IT-Sicherheit",
+        "source_node_id": "p-02-02",
+        "generated_by": "ai",
+        "confidence": 0.88
+      },
+      {
+        "id": "wrn-01",
+        "type": "warning",
+        "title": "Irrtum: Die 72-Stunden-Frist beginnt beim Vorfall, nicht bei Kenntnis",
+        "body": "Die 72-Stunden-Frist beginnt nicht mit dem Zeitpunkt des Vorfalls selbst, sondern erst mit dem Zeitpunkt der Kenntnis durch den Verantwortlichen. Wird ein Vorfall erst spät entdeckt, kann die Meldefrist trotzdem noch vollständig genutzt werden. Umgekehrt: Wer sofort Kenntnis hat, hat auch sofort nur 72 Stunden.",
+        "misconception": "Die 72-Stunden-Frist läuft ab dem Eintrittszeitpunkt der Datenpanne",
+        "severity": "high",
+        "source_node_id": "p-02-01",
+        "generated_by": "ai",
+        "confidence": 0.97
+      },
+      {
+        "id": "qst-01",
+        "type": "question",
+        "title": "Wann beginnt die 72-Stunden-Meldepflicht?",
+        "body": "Ab welchem Zeitpunkt beginnt die 72-Stunden-Frist für die Meldung einer Datenpanne, und an wen muss diese Meldung erfolgen?",
+        "bloom_level": "understand",
+        "answered_by": ["rul-01", "wrn-01", "prc-01"],
+        "difficulty": "intermediate",
+        "generated_by": "ai",
+        "confidence": 0.99
+      },
+      {
+        "id": "qst-02",
+        "type": "question",
+        "title": "Welche Schritte sind bei einer Datenpanne einzuleiten?",
+        "body": "Ein Mitarbeiter meldet, dass ein Laptop mit Kundendaten gestohlen wurde. Welche Schritte müssen Sie als nächstes unternehmen und in welcher Reihenfolge?",
+        "bloom_level": "apply",
+        "answered_by": ["prc-01", "rul-01", "rul-02"],
+        "difficulty": "intermediate",
+        "generated_by": "ai",
+        "confidence": 0.99
+      }
+    ],
+    "relations": [
+      { "id": "rel-001", "from_id": "cpt-03", "to_id": "rul-01", "relation_type": "has_rule", "weight": 1.0 },
+      { "id": "rel-002", "from_id": "cpt-03", "to_id": "rul-02", "relation_type": "has_rule", "weight": 0.9 },
+      { "id": "rel-003", "from_id": "cpt-03", "to_id": "wrn-01", "relation_type": "has_warning", "weight": 0.9 },
+      { "id": "rel-004", "from_id": "cpt-01", "to_id": "fct-01", "relation_type": "has_fact", "weight": 0.8 },
+      { "id": "rel-005", "from_id": "cpt-03", "to_id": "cpt-01", "relation_type": "is_part_of", "weight": 0.7, "note": "Eine Datenpanne betrifft immer personenbezogene Daten" },
+      { "id": "rel-006", "from_id": "cpt-02", "to_id": "rul-01", "relation_type": "has_rule", "weight": 1.0, "note": "Der Verantwortliche trägt die Meldepflicht" },
+      { "id": "rel-007", "from_id": "rul-01", "to_id": "prc-01", "relation_type": "enforced_by", "weight": 1.0 },
+      { "id": "rel-008", "from_id": "rul-01", "to_id": "cse-01", "relation_type": "has_consequence", "weight": 1.0 },
+      { "id": "rel-009", "from_id": "rul-02", "to_id": "prc-01", "relation_type": "enforced_by", "weight": 0.9 },
+      { "id": "rel-010", "from_id": "fct-02", "to_id": "cse-01", "relation_type": "supports", "weight": 0.95 },
+      { "id": "rel-011", "from_id": "prc-01", "to_id": "exm-01", "relation_type": "illustrated_by", "weight": 0.85 },
+      { "id": "rel-012", "from_id": "prc-01", "to_id": "cse-01", "relation_type": "can_cause", "weight": 0.8, "note": "Fehler im Prozess können zur unterlassenen Meldung führen" },
+      { "id": "rel-013", "from_id": "prc-01", "to_id": "rul-01", "relation_type": "enforced_by_rule", "weight": 1.0 },
+      { "id": "rel-014", "from_id": "cse-01", "to_id": "wrn-01", "relation_type": "related_to", "weight": 0.8 },
+      { "id": "rel-015", "from_id": "cse-01", "to_id": "prc-01", "relation_type": "mitigated_by", "weight": 0.9 },
+      { "id": "rel-016", "from_id": "wrn-01", "to_id": "rul-01", "relation_type": "related_to_rule", "weight": 0.9 },
+      { "id": "rel-017", "from_id": "exm-01", "to_id": "prc-01", "relation_type": "illustrates", "weight": 0.85 },
+      { "id": "rel-018", "from_id": "exm-01", "to_id": "rul-01", "relation_type": "illustrates", "weight": 0.8 },
+      { "id": "rel-019", "from_id": "qst-01", "to_id": "rul-01", "relation_type": "answered_by", "weight": 1.0 },
+      { "id": "rel-020", "from_id": "qst-01", "to_id": "wrn-01", "relation_type": "answered_by", "weight": 0.9 },
+      { "id": "rel-021", "from_id": "qst-01", "to_id": "prc-01", "relation_type": "answered_by", "weight": 0.8 },
+      { "id": "rel-022", "from_id": "qst-02", "to_id": "prc-01", "relation_type": "answered_by", "weight": 1.0 },
+      { "id": "rel-023", "from_id": "qst-02", "to_id": "rul-01", "relation_type": "answered_by", "weight": 0.85 },
+      { "id": "rel-024", "from_id": "qst-02", "to_id": "rul-02", "relation_type": "answered_by", "weight": 0.75 }
+    ]
+  }
+}

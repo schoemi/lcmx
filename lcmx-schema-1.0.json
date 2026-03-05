@@ -1,0 +1,638 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lcmx.io/schema/1.0/lcmx.json",
+  "title": "LCMX 1.0 — Learning Content Metadata Exchange",
+  "description": "Open metadata format for digital learning content, optimized for AI systems.",
+  "type": "object",
+  "required": ["meta"],
+  "additionalProperties": false,
+  "properties": {
+    "meta":      { "$ref": "#/$defs/Meta" },
+    "didactics": { "$ref": "#/$defs/Didactics" },
+    "structure": { "$ref": "#/$defs/Structure" },
+    "content":   { "$ref": "#/$defs/Content" },
+    "knowledge": { "$ref": "#/$defs/Knowledge" }
+  },
+
+  "$defs": {
+
+    "Meta": {
+      "title": "Meta",
+      "description": "Classical metadata about the learning content.",
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this content item (URI or UUID recommended).",
+          "examples": ["urn:example:course:dsgvo-grundlagen", "550e8400-e29b-41d4-a716-446655440000"]
+        },
+        "lcmx_version": {
+          "type": "string",
+          "description": "LCMX specification version used.",
+          "pattern": "^\\d+\\.\\d+$",
+          "examples": ["1.0"]
+        },
+        "title": {
+          "type": "string",
+          "description": "Display name of the learning content.",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description of the content (max. 500 characters).",
+          "maxLength": 500
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "description": "Nominal learning duration in minutes.",
+          "minimum": 0
+        },
+        "release_date": {
+          "type": "string",
+          "description": "Publication date (ISO 8601).",
+          "format": "date",
+          "examples": ["2024-03-01"]
+        },
+        "updated_date": {
+          "type": "string",
+          "description": "Date of last update (ISO 8601).",
+          "format": "date"
+        },
+        "content_type": {
+          "type": "string",
+          "description": "Type of learning content.",
+          "enum": [
+            "elearning",
+            "video",
+            "test",
+            "quiz",
+            "document",
+            "podcast",
+            "webinar",
+            "blended",
+            "microlearning",
+            "other"
+          ]
+        },
+        "languages": {
+          "type": "array",
+          "description": "Languages of the content as BCP 47 tags.",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}(-[A-Z]{2,3})?$"
+          },
+          "examples": [["de"], ["en"], ["de", "en"]]
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the content itself.",
+          "examples": ["2.1.0", "1.0"]
+        },
+        "provider": {
+          "type": "string",
+          "description": "Name of the content author or vendor."
+        }
+      }
+    },
+
+    "Didactics": {
+      "title": "Didactics",
+      "description": "Didactic and pedagogical metadata.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_audience": {
+          "type": "array",
+          "description": "Descriptions of intended learner groups.",
+          "items": { "type": "string" },
+          "examples": [["All employees", "Managers"]]
+        },
+        "learning_objectives": {
+          "type": "array",
+          "description": "Learning objectives in plain text.",
+          "items": { "type": "string" }
+        },
+        "prerequisites": {
+          "type": "array",
+          "description": "Recommended prior knowledge or prerequisites.",
+          "items": { "type": "string" }
+        },
+        "didactic_ratio": {
+          "$ref": "#/$defs/DidacticRatio"
+        },
+        "bloom_levels": {
+          "type": "array",
+          "description": "Bloom's taxonomy levels covered by this content.",
+          "items": {
+            "type": "string",
+            "enum": ["remember", "understand", "apply", "analyze", "evaluate", "create"]
+          }
+        },
+        "certification": {
+          "type": "boolean",
+          "description": "Whether completing this content leads to a certificate."
+        }
+      }
+    },
+
+    "DidacticRatio": {
+      "title": "DidacticRatio",
+      "description": "Proportional distribution across didactic dimensions. Values should sum to 1.0.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "knowledge_transfer": {
+          "type": "number",
+          "description": "Share of pure knowledge delivery.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "transfer": {
+          "type": "number",
+          "description": "Share of knowledge transfer and application.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "motivation": {
+          "type": "number",
+          "description": "Share of motivation and engagement elements.",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+
+    "Structure": {
+      "title": "Structure",
+      "description": "Sitemap / content tree of the learning content.",
+      "type": "object",
+      "required": ["nodes"],
+      "additionalProperties": false,
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "description": "Flat list of all content nodes (chapters, pages, sections).",
+          "items": { "$ref": "#/$defs/Node" }
+        }
+      }
+    },
+
+    "Node": {
+      "title": "Node",
+      "description": "A single node in the content tree (chapter, page, section, etc.).",
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique node identifier within this content.",
+          "examples": ["ch-01", "p-01-01"]
+        },
+        "title": {
+          "type": "string",
+          "description": "Display title of the node."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of node.",
+          "enum": ["chapter", "page", "section", "quiz", "video", "other"]
+        },
+        "path": {
+          "type": "string",
+          "description": "Relative path to the callable content resource.",
+          "examples": ["/chapter1/page1.html"]
+        },
+        "order": {
+          "type": "integer",
+          "description": "Display order within the parent node.",
+          "minimum": 0
+        },
+        "parent_id": {
+          "type": ["string", "null"],
+          "description": "ID of the parent node. null for top-level nodes."
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "description": "Estimated time to complete this node in minutes.",
+          "minimum": 0
+        },
+        "children": {
+          "type": "array",
+          "description": "Child nodes (alternative to parent_id).",
+          "items": { "$ref": "#/$defs/Node" }
+        }
+      }
+    },
+
+    "Content": {
+      "title": "Content",
+      "description": "AI-prepared content summaries for machine consumption.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "AI-generated summary of the full course (max. 1000 characters).",
+          "maxLength": 1000
+        },
+        "key_topics": {
+          "type": "array",
+          "description": "Most important topics or keywords.",
+          "items": { "type": "string" }
+        },
+        "pages": {
+          "type": "array",
+          "description": "Page-level content prepared for AI processing.",
+          "items": { "$ref": "#/$defs/PageContent" }
+        }
+      }
+    },
+
+    "PageContent": {
+      "title": "PageContent",
+      "description": "AI-prepared content for a single content page/node.",
+      "type": "object",
+      "required": ["node_id"],
+      "additionalProperties": false,
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "description": "Reference to a node ID from structure.nodes."
+        },
+        "ai_summary": {
+          "type": "string",
+          "description": "AI-generated summary of this page."
+        },
+        "ai_content": {
+          "type": "string",
+          "description": "Full AI-prepared text content of this page (Markdown)."
+        }
+      }
+    },
+
+    "Knowledge": {
+      "title": "Knowledge",
+      "description": "Knowledge graph representing the course content as a semantic network.",
+      "type": "object",
+      "required": ["items", "relations"],
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "List of all knowledge items.",
+          "items": { "$ref": "#/$defs/KnowledgeItem" }
+        },
+        "relations": {
+          "type": "array",
+          "description": "List of all directed relations between items.",
+          "items": { "$ref": "#/$defs/KnowledgeRelation" }
+        },
+        "generated_at": {
+          "type": "string",
+          "description": "ISO 8601 timestamp of graph generation.",
+          "format": "date-time"
+        },
+        "generator": {
+          "type": "string",
+          "description": "Tool or model name that generated the graph.",
+          "examples": ["claude-sonnet-4-20250514", "manual"]
+        },
+        "schema_version": {
+          "type": "string",
+          "description": "LCMX schema version.",
+          "examples": ["1.0"]
+        }
+      }
+    },
+
+    "KnowledgeItem": {
+      "title": "KnowledgeItem",
+      "description": "An atomic unit of knowledge extracted from the course content.",
+      "type": "object",
+      "required": ["id", "type", "title", "body"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique item ID using type prefix convention.",
+          "pattern": "^(cpt|fct|rul|prc|cse|exm|wrn|qst)-\\d+$",
+          "examples": ["cpt-01", "rul-03", "qst-02"]
+        },
+        "type": {
+          "type": "string",
+          "description": "Semantic type of this knowledge item.",
+          "enum": ["concept", "fact", "rule", "process", "cause_effect", "example", "warning", "question"]
+        },
+        "title": {
+          "type": "string",
+          "description": "Crisp noun phrase used as graph node label (max. 120 characters).",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "body": {
+          "type": "string",
+          "description": "Self-contained knowledge statement. Must be understandable without additional context. Markdown allowed.",
+          "minLength": 10
+        },
+        "source_node_id": {
+          "type": "string",
+          "description": "Reference to the structure node where this knowledge originates."
+        },
+        "generated_by": {
+          "type": "string",
+          "description": "Origin of this item.",
+          "enum": ["ai", "human", "hybrid"]
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Confidence score (0.0–1.0). 0.95+ = verbatim source, 0.80–0.94 = clearly implied, 0.60–0.79 = inference.",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "concept" } } },
+          "then": { "$ref": "#/$defs/ItemConcept" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "fact" } } },
+          "then": { "$ref": "#/$defs/ItemFact" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "rule" } } },
+          "then": { "$ref": "#/$defs/ItemRule" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "process" } } },
+          "then": { "$ref": "#/$defs/ItemProcess" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "cause_effect" } } },
+          "then": { "$ref": "#/$defs/ItemCauseEffect" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "example" } } },
+          "then": { "$ref": "#/$defs/ItemExample" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "warning" } } },
+          "then": { "$ref": "#/$defs/ItemWarning" }
+        },
+        {
+          "if": { "properties": { "type": { "const": "question" } } },
+          "then": { "$ref": "#/$defs/ItemQuestion" }
+        }
+      ]
+    },
+
+    "ItemConcept": {
+      "title": "ItemConcept",
+      "description": "Additional fields for type=concept.",
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "Thematic domain or subject area.",
+          "examples": ["Data Protection", "IT Security"]
+        },
+        "aliases": {
+          "type": "array",
+          "description": "Alternative names or synonyms for this concept.",
+          "items": { "type": "string" }
+        },
+        "keywords": {
+          "type": "array",
+          "description": "Related keywords for search and linking.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "ItemFact": {
+      "title": "ItemFact",
+      "description": "Additional fields for type=fact.",
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Citation or reference for this fact.",
+          "examples": ["GDPR Art. 99 Para. 2", "ISO 27001:2022 Section 6.1"]
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "Whether this fact has been manually verified."
+        }
+      }
+    },
+
+    "ItemRule": {
+      "title": "ItemRule",
+      "description": "Additional fields for type=rule.",
+      "type": "object",
+      "properties": {
+        "obligation": {
+          "type": "string",
+          "description": "Obligation level of this rule.",
+          "enum": ["must", "should", "may", "must_not"]
+        },
+        "legal_basis": {
+          "type": "string",
+          "description": "Legal article or standard this rule derives from.",
+          "examples": ["GDPR Art. 33 Para. 1"]
+        },
+        "scope": {
+          "type": "string",
+          "description": "Who or what this rule applies to."
+        }
+      }
+    },
+
+    "ItemProcess": {
+      "title": "ItemProcess",
+      "description": "Additional fields for type=process.",
+      "type": "object",
+      "properties": {
+        "trigger": {
+          "type": "string",
+          "description": "Event or condition that starts this process."
+        },
+        "outcome": {
+          "type": "string",
+          "description": "Expected result when the process completes successfully."
+        },
+        "steps_count": {
+          "type": "integer",
+          "description": "Number of steps in the process.",
+          "minimum": 1
+        },
+        "roles": {
+          "type": "array",
+          "description": "Roles or actors involved in this process.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "ItemCauseEffect": {
+      "title": "ItemCauseEffect",
+      "description": "Additional fields for type=cause_effect.",
+      "type": "object",
+      "properties": {
+        "cause": {
+          "type": "string",
+          "description": "The triggering condition or violation (the 'if')."
+        },
+        "effect": {
+          "type": "string",
+          "description": "The resulting consequence (the 'then')."
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity of the consequence.",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "probability": {
+          "type": "string",
+          "description": "Estimated probability of occurrence.",
+          "enum": ["low", "medium", "high"]
+        }
+      }
+    },
+
+    "ItemExample": {
+      "title": "ItemExample",
+      "description": "Additional fields for type=example.",
+      "type": "object",
+      "properties": {
+        "polarity": {
+          "type": "string",
+          "description": "Whether this is a positive (best practice) or negative (failure) example.",
+          "enum": ["positive", "negative"]
+        },
+        "realistic": {
+          "type": "boolean",
+          "description": "Whether this example is based on a real or realistic scenario."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Domain or context this example comes from."
+        }
+      }
+    },
+
+    "ItemWarning": {
+      "title": "ItemWarning",
+      "description": "Additional fields for type=warning.",
+      "type": "object",
+      "properties": {
+        "misconception": {
+          "type": "string",
+          "description": "The false belief stated in one sentence."
+        },
+        "severity": {
+          "type": "string",
+          "description": "How harmful this misconception typically is.",
+          "enum": ["low", "medium", "high", "critical"]
+        }
+      }
+    },
+
+    "ItemQuestion": {
+      "title": "ItemQuestion",
+      "description": "Additional fields for type=question.",
+      "type": "object",
+      "properties": {
+        "bloom_level": {
+          "type": "string",
+          "description": "Bloom's taxonomy level of this learning question.",
+          "enum": ["remember", "understand", "apply", "analyze", "evaluate", "create"]
+        },
+        "answered_by": {
+          "type": "array",
+          "description": "IDs of items that answer this question.",
+          "items": { "type": "string" }
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "Perceived difficulty level for the target audience.",
+          "enum": ["basic", "intermediate", "advanced"]
+        }
+      }
+    },
+
+    "KnowledgeRelation": {
+      "title": "KnowledgeRelation",
+      "description": "A directed, weighted relation between two knowledge items.",
+      "type": "object",
+      "required": ["id", "from_id", "to_id", "relation_type"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique relation ID.",
+          "pattern": "^rel-\\d+$",
+          "examples": ["rel-001", "rel-042"]
+        },
+        "from_id": {
+          "type": "string",
+          "description": "ID of the source item."
+        },
+        "to_id": {
+          "type": "string",
+          "description": "ID of the target item."
+        },
+        "relation_type": {
+          "type": "string",
+          "description": "Semantic type of the relation.",
+          "enum": [
+            "has_example",
+            "has_rule",
+            "has_fact",
+            "has_warning",
+            "is_part_of",
+            "is_a",
+            "related_to",
+            "requires",
+            "supports",
+            "contradicts",
+            "qualifies",
+            "part_of_process",
+            "enforced_by",
+            "has_exception",
+            "has_consequence",
+            "derived_from",
+            "applies_to",
+            "requires_concept",
+            "enforced_by_rule",
+            "can_cause",
+            "illustrated_by",
+            "precedes",
+            "mitigated_by",
+            "escalates_to",
+            "illustrates",
+            "contrasts_with",
+            "related_to_rule",
+            "answered_by",
+            "relates_to",
+            "requires_for_answer"
+          ]
+        },
+        "weight": {
+          "type": "number",
+          "description": "Relation strength. 1.0 = defining/mandatory, 0.7–0.9 = strong, 0.4–0.6 = contextual.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional human-readable explanation of this relation."
+        }
+      }
+    }
+
+  }
+}
