@@ -2,8 +2,9 @@
 
 > **Status:** Draft 1.0  
 > **Lizenz:** [MIT](LICENSE)  
-> **Maintainer:** *[your name / organization]*  
-> **Feedback & Contributions:** Issues und Pull Requests willkommen
+> **Maintainer:** Dirk Schoemakers
+> **Kontakt:** dirk@schoemakers.com
+> **Feedback & Contributions:** Verbesserungs- und Ergänzungsvorschläge sind in Form von Issues und Pull Requests willkommen. Gerne auch Kontakt im direkten Austausch
 
 ---
 
