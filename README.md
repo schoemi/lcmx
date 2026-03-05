@@ -138,7 +138,6 @@ The specification includes **AI prompts** for fully automated Knowledge Graph ge
 | **1.0** (current) | Base specification, Knowledge Graph, SCORM/LTI delivery |
 | **1.1** | Multilingual Knowledge Graphs, `translations` object |
 | **1.2** | Competency mapping (Skills Framework, ESCO linking) |
-| **2.0** | Streaming API, incremental updates, webhooks |
 
 ## Contributing
 
