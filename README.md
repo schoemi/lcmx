@@ -1,4 +1,4 @@
-# LCMX — Learning Content Metadata Exchange
+# LCMX — Learning Content Metadata eXchange
 
 > **Open metadata format for digital learning content, optimized for AI systems.**
 
