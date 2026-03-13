@@ -145,7 +145,7 @@ Issues and Pull Requests are welcome! Whether it's a typo in the spec, a schema 
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE).
+This project is licensed under the CC-BY-SA 4.0 (LICENSE).
 
 ---
 
